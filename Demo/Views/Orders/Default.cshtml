@@ -1,0 +1,45 @@
+﻿@model PagedList<Order>
+@{
+    ViewBag.Title = "Default setting";
+}
+
+<table class="table table=bordered table-striped">
+    <tr>
+        <th class="nowrap">
+            @Html.DisplayNameFor(model => model.OrderId)
+        </th>
+        <th class="nowrap">
+            @Html.DisplayNameFor(model => model.CustomerId)
+        </th>
+        <th class="nowrap">
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th class="nowrap">
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+        </tr>
+    }
+</table>
+<h3>Html.Pager:</h3>
+<code><pre>@@Html.Pager(Model)</pre></code>
+@Html.Pager(Model)
+
+<h3>TagHelper:</h3>
+<code><pre>&lt;mvcpager asp-model="@@Model"&gt;&lt;/mvcpager&gt;</pre></code>
+<mvcpager asp-model="@Model"></mvcpager>
