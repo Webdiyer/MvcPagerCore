@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using Webdiyer.MvcPagerCoreDemo.Models;
 using Webdiyer.WebControls.AspNetCore;
 
@@ -13,6 +8,7 @@ namespace Demo.Controllers
     public class OrdersController : Controller
     {
         private readonly DemoDbContext _context;
+        int pageSize = 5; //default page size
 
         public OrdersController(DemoDbContext context)
         {
@@ -21,7 +17,24 @@ namespace Demo.Controllers
         
         public IActionResult Default(int pageindex=1)
         {
-            var model = _context.Orders.OrderByDescending(o => o.OrderDate).ToPagedList(pageindex, 10);
+            var model = _context.Orders.OrderByDescending(o => o.OrderDate).ToPagedList(pageindex, pageSize);
+            return View(model);
+        }
+
+        public IActionResult Ajax(int pageindex = 1)
+        {
+            var model = _context.Orders.OrderByDescending(o => o.OrderDate).ToPagedList(pageindex, pageSize);
+            string xrh = Request.Headers["X-Requested-With"];
+            if (!string.IsNullOrEmpty(xrh) && xrh.Equals("XMLHttpRequest", System.StringComparison.OrdinalIgnoreCase))
+            {
+                return PartialView("_OrderList", model);
+            }
+            return View(model);
+        }
+
+        public IActionResult Bootstrap(int id = 1)
+        {
+            var model = _context.Orders.OrderByDescending(o => o.OrderDate).ToPagedList(id, pageSize);
             return View(model);
         }
         

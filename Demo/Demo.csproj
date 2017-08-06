@@ -31,5 +31,9 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\js\MvcPager.js" />
+    <None Include="wwwroot\js\MvcPager.min.js" />
+  </ItemGroup>
 
 </Project>
