@@ -45,5 +45,20 @@ namespace Webdiyer.WebControls.AspNetCore
         {
             return allItems.AsQueryable().ToPagedList(pageIndex, pageSize);
         } 
+               
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="allItems"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="selector">Projects each element of a sequence into a new form.</param>
+        /// <returns></returns>
+        public static IEnumerable<TResult> ToPagedList<T, TResult>(this IQueryable<T> allItems, int pageIndex, int pageSize, Func<T, TResult> selector)
+        {
+            return allItems.ToPagedList(pageIndex, pageSize).Select(selector);
+        }
     }
 }
