@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
     <AssemblyName>Webdiyer.MvcPagerCoreDemo</AssemblyName>
     <RootNamespace>Webdiyer.MvcPagerCoreDemo</RootNamespace>
   </PropertyGroup>

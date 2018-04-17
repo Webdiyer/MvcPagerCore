@@ -7,15 +7,34 @@
     <PackageId>Webdiyer.MvcPagerCore</PackageId>
     <Authors>Webdiyer</Authors>
     <Company />
-    <Product>MvcPager</Product>
-    <Description>Pagination compoment for ASP.NET Core Mvc 1.1+</Description>
-    <Copyright>2017 Webdiyer</Copyright>
+    <Product>MvcPagerCore</Product>
+    <Description>Pagination compoment for ASP.NET Core Mvc 2.0+</Description>
+    <Copyright>2017-2018 Webdiyer</Copyright>
     <PackageProjectUrl>http://www.webdiyer.com/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Webdiyer/MvcPagerCore</RepositoryUrl>
     <PackageTags>MvcPager MvcPagerCore</PackageTags>
-    <SignAssembly>False</SignAssembly>
-    <AssemblyOriginatorKeyFile>MvcPager.pfx</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MvcPagerCore.pfx</AssemblyOriginatorKeyFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.1</Version>
+    <PackageLicenseUrl>https://github.com/Webdiyer/MvcPagerCore/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netcoreapp2.0\Webdiyer.WebControls.MvcPager.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="wwwroot\MvcPager.js" />
+    <None Remove="wwwroot\MvcPager.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\lib\MvcPagerCore\MvcPager.js" />
+    <Content Include="wwwroot\lib\MvcPagerCore\MvcPager.min.js" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.2" />
